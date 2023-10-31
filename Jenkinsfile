@@ -29,16 +29,8 @@ pipeline {
                     def mysqlPodName = 'mysql-pod'
                     def phpAdminPodName = 'phpadmin-pod'
 
-                    bat "kubectl create cm db-config2 --from-literal=MYSQL_DATABASE=sqldb"
-                    bat "kubectl create secret generic db-secret2 --from-literal=MYSQL_ROOT_PASSWORD=password"
                     // Apply the MySQL and PHPMyAdmin YAML files to the Kubernetes cluster
                     bat "kubectl apply -f mysql-pod.yaml"
-                    bat "kubectl expose pod mysql-pod2 --port=3306 --target-port=3306"
-
-
-                    // bat "kubectl create cm phpadmin-config2 --from-literal=MYSQL_DATABASE=sqldb"
-                    // bat "kubectl create secret generic db-secret2 --from-literal=MYSQL_ROOT_PASSWORD=password"
-
                     bat "kubectl apply -f phpadmin.yaml"
 
                     // Wait for the MySQL and PHPMyAdmin pods to be ready (you may need to adjust the timeouts)
