@@ -11,7 +11,7 @@ pipeline {
         stage('Build and Push Docker Images') {
             steps {
                 script {
-                    def dockerImageName = "anishaaaaa/myphp:latest"
+                    def dockerImageName = "anishaaaaa/myphp2:latest"
 
                     // Build the Apache Docker image
                     bat "docker build -t $dockerImageName -f Dockerfile ."
